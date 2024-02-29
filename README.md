@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://semver.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## Getting Started
+# DicoBeer
 
-First, run the development server:
+> Site qui répertorie des bières et où l’utilisateur peut créer ses propres listes (bières favorites, à essayer…) et donner un avis sur les bières.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[![Next][Next.js]][Next-url] 
+[![React][React.js]][React-url]
+[![MongoDB][MongoDB]][MongoDB-url] 
+[![Tailwind CSS][TailwindCSS]][TailwindCSS-url]
+[![Express.js][Express]][Express-url]
+[![Node.js][Node.js]][Node-url] 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Sommaire
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> - [Installation](#installation)
+>   - [Lancer l'API](#lancer-lapi)
+>   - [Lancer l'application](#lancer-lapplication)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+### Lancer l'API
 
-To learn more about Next.js, take a look at the following resources:
+> Créer un fichier .env et remplissez-le :
+>
+> ```bash
+> # fichier .env
+> PORT=
+> MONGODB_URL=""
+> DATABASE_NAME=""
+> ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Installer les dépendances et lancer l'api
+>
+> ```bash
+> # dans api/
+> npm i
+> npm run dev
+> ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Lancer l'application
 
-## Deploy on Vercel
+> Dans un nouveau terminal, installer les dépendances et lancer l'application.
+>
+> ```bash
+> # dans front/
+> npm i
+> npm run dev
+> ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> Ouvrir [http://localhost:3000](http://localhost:3000) avec votre navigateur pour voir le résultat.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- LINKS & IMAGES -->
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[MongoDB]: https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white
+[MongoDB-url]: https://www.mongodb.com/
+[TailwindCSS]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[TailwindCSS-url]: https://tailwindcss.com/
+[Express]: https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white
+[Express-url]: https://expressjs.com/
+[Node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+[Node-url]: https://nodejs.org/
