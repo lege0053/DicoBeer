@@ -33,15 +33,15 @@ export default function Page() {
   }, []);
 
   return (
-    <div>
-      <h1>Beers</h1>
+    <div className="bg-gray-100 p-8">
+      <h1 className="text-3xl font-bold mb-4">Bières</h1>
       <ul>
         {beers.map(beer => (
-          <li key={beer._id}>
-            <h2>{beer.nom}</h2>
-            <p>Description: {beer.description}</p>
-            <p>Degré d'alcool: {beer.degre_alcool}%</p>
-            <p>Type: {beer.type}%</p>
+          <li key={beer._id} className="border rounded-lg p-4 mb-4">
+            <h2 className="text-xl font-semibold mb-2">{beer.nom}</h2>
+            <p className="mb-2"><span className="font-semibold">Description:</span> {beer.description}</p>
+            <p className="mb-2"><span className="font-semibold">Degré d'alcool:</span> {beer.degre_alcool}%</p>
+            <p className="mb-2"><span className="font-semibold">Type:</span> {beer.type}</p>
           </li>
         ))}
       </ul>
