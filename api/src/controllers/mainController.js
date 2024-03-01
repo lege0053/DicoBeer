@@ -1,10 +1,7 @@
-const { userCollection } = require("../database");
-
 const mainController = {
-  apiHomePage: async (req, res) => {
-    const users = await userCollection.find({}).toArray();
-    res.send(users);
-  },
+  apiDefaultPage: (req, res) => {
+    res.send("Bienvenue !")
+  }
 };
 
 module.exports = mainController;
