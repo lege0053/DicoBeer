@@ -1,19 +1,19 @@
 import { NextResponse, NextRequest } from 'next/server'
-//import { isAuthenticated } from '@lib/auth'
-
-const isAuthenticated = true
+//import { authenticate } from 'auth-provider'
  
-// This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-    // Call our authentication function to check the request
-  if (!isAuthenticated) {
-    // Redirection
-    return NextResponse.redirect(new URL('/', request.url))
+  //const isAuthenticated = authenticate(request)
+  const isAuthenticated = true
+ 
+  // If the user is authenticated, continue as normal
+  if (isAuthenticated) {
+    return NextResponse.next()
   }
-
-  
+ 
+  // Redirect to login page if not authenticated
+  return NextResponse.redirect(new URL('/login', request.url))
 }
  
 export const config = {
-    matcher: '/dashboard/settings',
-  }
+  matcher: '/dashboard/:path*',
+}
