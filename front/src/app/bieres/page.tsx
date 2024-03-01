@@ -39,6 +39,7 @@ export default function Page() {
         {beers.map(beer => (
           <li key={beer._id} className="border rounded-lg p-4 mb-4">
             <h2 className="text-xl font-semibold mb-2">{beer.nom}</h2>
+            <p className="mb-2"><span className="font-semibold">Id:</span> {beer._id}</p>
             <p className="mb-2"><span className="font-semibold">Description:</span> {beer.description}</p>
             <p className="mb-2"><span className="font-semibold">Degré d'alcool:</span> {beer.degre_alcool}%</p>
             <p className="mb-2"><span className="font-semibold">Type:</span> {beer.type}</p>
