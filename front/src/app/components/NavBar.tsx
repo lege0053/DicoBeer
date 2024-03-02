@@ -29,11 +29,11 @@ export function NavBar() {
           </Link>
         </div>
         <div className="hidden md:flex"> 
-          <ul className="flex justify-end space-x-4">
+          <ul className="flex justify-end space-x-4 items-center">
             <li><Link href="/profil"><AiOutlineUser className="w-6 h-6 mr-2"/></Link></li>
             <li><Link href="/lists"><MdListAlt className="w-6 h-6 mr-2"/></Link></li>
             <NavItem href="/connexion" onClick={closeMenu}>Connexion</NavItem>
-            <NavItem href="/inscription" onClick={closeMenu}>Inscription</NavItem>
+            <NavItem href="/inscription" onClick={closeMenu} className="rounded text-white bg-black px-2 py-1">Inscription</NavItem>
           </ul>
         </div>
         <div className="md:hidden">
@@ -62,10 +62,10 @@ export function NavBar() {
 }
 
 // Élément de menu de navigation
-function NavItem({ href, children, onClick }: { href: string; children?: React.ReactNode; onClick: any }) {
+function NavItem({ href, children, onClick, className }: { href: string; children?: React.ReactNode; onClick: any; className?:string }) {
   return (
     <li onClick={onClick}>
-      <Link href={href} className="flex items-center font-bold">
+      <Link href={href} className={"flex items-center font-bold " + className}>
         {children}
       </Link>
     </li>
