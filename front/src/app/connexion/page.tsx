@@ -80,7 +80,7 @@ export default function Page() {
                   </div>
                   <button type="submit" className="w-full bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Connexion</button>
                   <p className="text-sm font-light text-gray-500">
-                      Pas encore de compte ? <a href="#" className="font-medium text-primary-600 hover:underline">Inscription</a>
+                      Pas encore de compte ? <a href="inscription" className="font-medium text-primary-600 hover:underline">Inscription</a>
                   </p>
               </form>
           </div>
