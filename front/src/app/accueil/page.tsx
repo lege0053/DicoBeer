@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return (
+  return (<>
     <div className="grid grid-cols-2 h-screen">
       {/* Premier carré */}
       <div className="relative h-3/5 bg-gradient-to-b from-green-100 to-green-50">
@@ -59,5 +59,18 @@ export default function Page() {
         </div>
       </div>
     </div>
-  );
+    <div className="bg-white">
+      <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <div className="mt-4 md:mt-0">
+          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">Ne ratez plus rien</h2>
+          <p className="mb-6 font-light text-gray-500 md:text-lg">Souscrivez à notre newsletter pour recevoir les nouveautés chaque semaine.</p>
+          <a href="#" className="inline-flex items-center bg-green-300 hover:bg-green-400 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            Souscire maintenant
+          </a>
+        </div>
+        <img className="w-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image" />
+        <img className="w-full hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image" />
+      </div>
+    </div>
+  </>);
 }
