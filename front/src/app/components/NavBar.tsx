@@ -31,7 +31,7 @@ export function NavBar() {
         <div className="hidden md:flex"> 
           <ul className="flex justify-end space-x-4 items-center">
             <li><Link href="/profil"><AiOutlineUser className="w-6 h-6 mr-2"/></Link></li>
-            <li><Link href="/lists"><MdListAlt className="w-6 h-6 mr-2"/></Link></li>
+            <li><Link href="/listes"><MdListAlt className="w-6 h-6 mr-2"/></Link></li>
             <NavItem href="/connexion" onClick={closeMenu}>Connexion</NavItem>
             <NavItem href="/inscription" onClick={closeMenu} className="rounded text-white bg-black px-2 py-1">Inscription</NavItem>
           </ul>
@@ -46,7 +46,7 @@ export function NavBar() {
                   <NavItem href="/contact" onClick={closeMenu}>Contact</NavItem>
                   <hr className="w-full border-t border-gray-600" />
                   <NavItem href="/profil" onClick={closeMenu}>Mon Compte</NavItem>
-                  <NavItem href="/lists" onClick={closeMenu}>Mes listes</NavItem>
+                  <NavItem href="/listes" onClick={closeMenu}>Mes listes</NavItem>
                   <hr className="w-full border-t border-gray-600" />
                   <NavItem href="/connexion" onClick={closeMenu}>Connexion</NavItem>
                   <NavItem href="/inscription" onClick={closeMenu}>Inscription</NavItem>

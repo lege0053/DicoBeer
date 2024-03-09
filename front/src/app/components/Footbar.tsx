@@ -26,7 +26,7 @@ const Footbar = () => {
             <p className="font-bold mb-6 text-center sm:text-left">Liens utiles</p>
             <ul className="text-center sm:text-left">
               <li><a href="profil" className="text-gray-500">Mon Compte</a></li>
-              <li className='mt-4'><a href="lists" className="text-gray-500">Mes Listes</a></li>
+              <li className='mt-4'><a href="listes" className="text-gray-500">Mes Listes</a></li>
               <li className='mt-4'><a href="bieres" className="text-gray-500">Bières</a></li>
             </ul>
           </div>

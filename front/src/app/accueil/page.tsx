@@ -1,9 +1,63 @@
-import { Metadata } from 'next'
- 
+import { Metadata } from "next";
+import Image from "next/image";
+
 export const metadata: Metadata = {
-  title: 'Accueil',
-}
+  title: "Accueil",
+};
 
 export default function Page() {
-    return <h1>Accueil</h1>
-  }
+  return (
+    <div className="grid grid-cols-2 h-screen">
+      {/* Premier carré */}
+      <div className="relative h-3/5 bg-gradient-to-b from-green-100 to-green-50">
+        {/* Contenu du premier carré */}
+        <div className="relative grid grid-cols-2">
+          <div className="flex flex-col justify-center m-8 relative z-10">
+            <p className="text-black font-bold text-2xl mb-2">
+              Découvrez la bière du mois
+            </p>
+            <p className="text-gray-500 mb-2">
+              Hoffenberg, le goût délicieux de la boisson
+            </p>
+            <a href="bieres">
+              <button className="bg-green-500 text-white px-4 py-2 rounded">
+                Explorer
+              </button>
+            </a>
+          </div>
+          <div className="flex items-center justify-center relative z-20">
+            <Image
+              src="/beer_month.png"
+              width={200}
+              height={200}
+              alt="bière du mois"
+            />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center z-0">
+            {/* Ajustement de la taille du cercle en pourcentage */}
+            <div className="w-3/5 h-5/6 rounded-full bg-gradient-to-b from-purple-200 to-green-50"></div>
+          </div>
+        </div>
+      </div>
+      {/* Deuxième carré */}
+      <div className="flex-1 bg-gray-300 h-3/5">
+        {/* Contenu du deuxième carré */}
+        <div className="relative grid grid-cols-2">
+          <div className="flex flex-col m-8">
+            <p className="text-black font-bold text-2xl mb-2">
+              Créez vos listes personnalisées
+            </p>
+            <p className="text-gray-500 mb-2">
+              Une liste de favoris, de bières à découvrir et plus
+            </p>
+            <a href="listes">
+              <button className="bg-green-500 text-white px-4 py-2 rounded">
+                Créer
+              </button>
+            </a>{" "}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
