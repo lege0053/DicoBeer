@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footbar = () => {
   return (
-    <footer className="py-4 sm:py-8 md:py-12 lg:py-16 xl:py-20">
+    <footer className="p-4 md:py-12 lg:py-16 xl:py-20">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:justify-start">
           {/* DicoBeer */}
@@ -37,8 +37,8 @@ const Footbar = () => {
               <p className="font-bold">Newsletter</p>
               <p className="text-md text-gray-500 mt-6">Souscrivez à notre newsletter</p>
               <div className="flex flex-col">
-                  <input type="email" placeholder="Votre e-mail..." className="flex-1 bg-gray-200 border rounded py-2 px-4 mt-4 focus:outline-none" />
-                  <button className="bg-green-500 text-white border rounded py-2 px-4 mt-2">Souscrire gratuitement</button>        
+                <input type="email" className="bg-gray-50 border border-[#2EBB77] text-gray-900 text-sm rounded-xl w-full p-2.5 focus:outline-none mt-4" placeholder="Votre adresse mail" />
+                <button className="bg-[#2EBB77] text-white border rounded-xl py-2 px-4 mt-2">Souscrire gratuitement</button>        
               </div>
             </div>
           </div>
