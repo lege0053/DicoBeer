@@ -51,7 +51,25 @@ export default function Page() {
             </a>
           </div>
         </div>
-        <img className="w-full" src="/newsletter.png" alt="dashboard image" />
+        <img className="w-full" src="/newsletter.png" alt="newsletter" />
+      </div>
+    </div>
+
+    <div id="communaute" className="bg-[#D9B56B]">
+      <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <div className="mt-4 md:mt-0">
+          <h2 className="mb-4 text-5xl font-bold text-white">Rejoignez la communauté Dico Beer</h2>
+          <p className="mb-6 text-white md:text-lg">Partagez vos avis sur vos bières favorites.</p>
+          <div className="flex flex-row mb-6">
+            <a href="bieres" className="pr-5">
+              <button className="bg-white font-bold px-16 py-4 rounded-lg">Explorer</button>
+            </a>
+            <a href="contact">
+              <button className="bg-white font-bold px-16 py-4 rounded-lg">Contact</button>
+            </a>
+          </div>
+        </div>
+        <img className="w-full" src="/multi_beers.png" alt="bières" />
       </div>
     </div>
   </>);
