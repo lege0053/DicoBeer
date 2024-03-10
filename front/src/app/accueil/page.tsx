@@ -58,14 +58,16 @@ export default function Page() {
     <div id="communaute" className="bg-[#D9B56B]">
       <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
         <div className="mt-4 md:mt-0">
-          <h2 className="mb-4 text-5xl font-bold text-white">Rejoignez la communauté Dico Beer</h2>
+          <h2 className="mb-4 text-4xl xl:text-5xl tracking-tight font-bold text-white">Rejoignez la communauté Dico Beer</h2>
           <p className="mb-6 text-white md:text-lg">Partagez vos avis sur vos bières favorites.</p>
           <div className="flex flex-row mb-6">
-            <a href="bieres" className="pr-5">
-              <button className="bg-white font-bold px-16 py-4 rounded-lg">Explorer</button>
+            <a href="bieres" className="inline-flex items-center justify-center px-12 py-2.5  mr-3 text-base font-bold text-center rounded-lg bg-white">
+              Explorer
+              <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </a>
-            <a href="contact">
-              <button className="bg-white font-bold px-16 py-4 rounded-lg">Contact</button>
+            <a href="contact" className="inline-flex items-center justify-center px-12 y-2.5 mr-3 text-base font-bold text-center rounded-lg bg-white">
+              Contact
+              <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </a>
           </div>
         </div>
