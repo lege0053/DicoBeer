@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* globals.css */
-
 html, body, #wrapper {
     height: 100%;
   }
@@ -11,4 +9,9 @@ html, body, #wrapper {
 #content {
     flex-grow: 1;
 }
-  
+
+#carre-2 {
+  background-image: url("/beers.png");
+  background-size: cover;
+  background-position: center;
+}

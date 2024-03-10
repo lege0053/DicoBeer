@@ -7,58 +7,42 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (<>
-    <div className="grid grid-cols-2 h-screen">
-      {/* Premier carré */}
-      <div className="relative h-3/5 bg-gradient-to-b from-green-100 to-green-50">
-        {/* Contenu du premier carré */}
-        <div className="relative grid grid-cols-2">
-          <div className="flex flex-col justify-center m-8 relative z-10">
-            <p className="text-black font-bold text-2xl mb-2">
-              Découvrez la bière du mois
-            </p>
-            <p className="text-gray-500 mb-2">
-              Hoffenberg, le goût délicieux de la boisson
-            </p>
-            <a href="bieres">
-              <button className="bg-green-500 text-white px-4 py-2 rounded">
-                Explorer
-              </button>
-            </a>
-          </div>
-          <div className="flex items-center justify-center relative z-20">
-            <Image
-              src="/beer_month.png"
-              width={200}
-              height={200}
-              alt="bière du mois"
-            />
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center z-0">
-            {/* Ajustement de la taille du cercle en pourcentage */}
-            <div className="w-3/5 h-5/6 rounded-full bg-gradient-to-b from-purple-200 to-green-50"></div>
-          </div>
-        </div>
+
+<div className="grid grid-cols-2">
+
+  {/* Carré 1 */}
+  <div className="justify-center items-center relative flex h-[722px] bg-[#E5F4ED] from-purple-200 to-green-50 before:absolute before:h-[620px] before:w-[600px] before:rounded-full before:bg-gradient-to-b">
+    <div className="grid grid-cols-2 gap-16">
+      <div className="z-20 mt-96 max-w-64">
+        <p className="text-black font-bold text-[32px] mb-4">Découvrez la bière du mois</p>
+        <p className="text-gray-500 mb-8 text-lg">Hoffenberg, le goût délicieux de la boisson</p>
+        <a href="bieres">
+          <button className="bg-[#2EBB77] font-medium text-white px-20 py-4 rounded-xl">Explorer</button>
+        </a>
       </div>
-      {/* Deuxième carré */}
-      <div className="flex-1 bg-gray-300 h-3/5">
-        {/* Contenu du deuxième carré */}
-        <div className="relative grid grid-cols-2">
-          <div className="flex flex-col m-8">
-            <p className="text-black font-bold text-2xl mb-2">
-              Créez vos listes personnalisées
-            </p>
-            <p className="text-gray-500 mb-2">
-              Une liste de favoris, de bières à découvrir et plus
-            </p>
-            <a href="listes">
-              <button className="bg-green-500 text-white px-4 py-2 rounded">
-                Créer
-              </button>
-            </a>{" "}
-          </div>
-        </div>
+      <div className="z-20 mt-40 row-span-2">
+        <Image src="/beer_month.png" width={350} height={520} alt="bière du mois" />
       </div>
     </div>
+  </div>
+
+  {/* Carré 2 */}
+  <div id="carre-2" className="justify-center items-center relative flex h-[722px]">
+    <div className="grid grid-cols-2 gap-16">
+      <div className="z-20 mt-96 max-w-64">
+        <p className="text-black font-bold text-[32px] mb-4">Créez vos listes personnalisées</p>
+        <p className="text-gray-500 mb-8 text-lg">Une liste de favoris, de bières à découvrir et plus</p>
+        <a href="listes">
+          <button className="bg-[#2EBB77] font-medium text-white px-20 py-4 rounded-xl">Créer</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
     <div className="bg-white">
       <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
         <div className="mt-4 md:mt-0">

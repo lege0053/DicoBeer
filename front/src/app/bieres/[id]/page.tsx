@@ -19,7 +19,7 @@ export default function Page({ params }: { params: { id: string } }) {
     <div className="flex items-center mb-4">
         <img className="w-10 h-10 me-4 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="" />
         <div className="font-medium">
-            <p>Jese Leos <time datetime="2014-08-16 19:00" className="block text-sm text-gray-500 ">Membre depuis Août 2023</time></p>
+            <p>Jese Leos <time className="block text-sm text-gray-500">Membre depuis Août 2023</time></p>
         </div>
     </div>
     <div className="flex items-center mb-1 space-x-1 rtl:space-x-reverse">
@@ -45,7 +45,7 @@ export default function Page({ params }: { params: { id: string } }) {
     <p className="mb-3 text-gray-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae explicabo amet corporis quas debitis ullam, culpa quibusdam reprehenderit illo vitae quos consectetur tenetur veniam voluptas soluta minus distinctio quam accusamus?</p>
     <a href="#" className="block mb-5 text-sm font-medium text-blue-600 hover:underline">Lire plus</a>
     <aside>
-    <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">19 personnes ont trouvé ça utile</p>
+    <p className="mt-1 text-xs text-gray-500">19 personnes ont trouvé ça utile</p>
         <div className="flex items-center mt-3">
             <a href="#" className="px-2 py-1.5 text-xs font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Utile</a>
             <a href="#" className="ps-4 text-sm font-medium text-blue-600 hover:underline border-gray-200 ms-4 border-s md:mb-0">Signaler</a>

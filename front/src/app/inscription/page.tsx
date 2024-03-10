@@ -15,15 +15,15 @@ export default function Page() {
                   </h1>
                   <form className="space-y-4 md:space-y-6" action="#">
                       <div>
-                          <label for="email" className="block mb-2 text-sm font-medium text-gray-900">Votre email</label>
+                          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">Votre email</label>
                           <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="nom@dicobeer.com" required />
                       </div>
                       <div>
-                          <label for="password" className="block mb-2 text-sm font-medium text-gray-900">Mot de passe</label>
+                          <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">Mot de passe</label>
                           <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required />
                       </div>
                       <div>
-                          <label for="confirm-password" className="block mb-2 text-sm font-medium text-gray-900">Confirmer le mot de passe</label>
+                          <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900">Confirmer le mot de passe</label>
                           <input type="confirm-password" name="confirm-password" id="confirm-password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required />
                       </div>
                       <div className="flex items-start">
@@ -31,7 +31,7 @@ export default function Page() {
                             <input id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required />
                           </div>
                           <div className="ml-3 text-sm">
-                            <label for="terms" className="font-light text-gray-500">J'accepte les <a className="font-medium text-primary-600 hover:underline" href="#">Termes et Conditions</a></label>
+                            <label htmlFor="terms" className="font-light text-gray-500">J'accepte les <a className="font-medium text-primary-600 hover:underline" href="#">Termes et Conditions</a></label>
                           </div>
                       </div>
                       <button type="submit" className="w-fullbg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Créer un compte</button>

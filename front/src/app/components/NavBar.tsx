@@ -14,7 +14,7 @@ export function NavBar() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <nav className="py-4">
+    <nav className="py-8">
       <div className="container mx-auto flex justify-between items-center relative">
         <div className="hidden md:flex">
           <ul className="flex space-x-4">
