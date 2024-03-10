@@ -6,8 +6,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
     return (
-      <section className="bg-gray-50">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <section className="bg-[#E5F4ED]">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
           <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                   <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
@@ -34,7 +34,7 @@ export default function Page() {
                             <label htmlFor="terms" className="font-light text-gray-500">J'accepte les <a className="font-medium text-primary-600 hover:underline" href="#">Termes et Conditions</a></label>
                           </div>
                       </div>
-                      <button type="submit" className="w-fullbg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Créer un compte</button>
+                      <button type="submit" className="w-full border border-[#2EBB77] focus:outline-none text-[#2EBB77] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Créer un compte</button>
                       <p className="text-sm font-light text-gray-500 ">
                           Vous avez déjà un compte ? <a href="connexion" className="font-medium text-primary-600 hover:underline">Connexion</a>
                       </p>

@@ -9,7 +9,6 @@ export default function Page() {
   return (<>
 
     <div className="grid grid-cols-1 lg:grid-cols-2">
-      
       {/* Carré 1 */}
       <div className="justify-center items-center flex h-[522px] lg:h-[622px] xl:h-[722px] bg-[#E5F4ED] from-purple-200 to-green-50 before:absolute before:h-[420px] before:w-[400px] lg:before:h-[520px] lg:before:w-[500px] xl:before:h-[620px] xl:before:w-[600px] before:rounded-full before:bg-gradient-to-b">
         <div className="grid mx-10 grid-cols-2 gap-2 lg:gap-4 xl:gap-16">
@@ -17,7 +16,7 @@ export default function Page() {
             <p className="text-black font-bold text-3xl mb-4">Découvrez la bière du mois</p>
             <p className="text-gray-500 mb-8 text-lg">Hoffenberg, le goût délicieux de la boisson</p>
             <a href="bieres">
-              <button className="bg-[#2EBB77] font-medium text-white px-16 md:px-20 py-4 rounded-xl">Explorer</button>
+              <button className="bg-[#2EBB77] font-medium text-white px-16 md:px-20 py-4 rounded-lg">Explorer</button>
             </a>
           </div>
           <div className="z-20 2xl:mt-40">
@@ -25,7 +24,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-
       {/* Carré 2 */}
       <div id="carre-2" className="justify-center items-center flex h-[522px] lg:h-[622px] xl:h-[722px]">
         <div className="grid mx-10 grid-cols-2 gap-8 mb:gap-16">
@@ -33,16 +31,13 @@ export default function Page() {
             <p className="text-black font-bold text-3xl mb-4">Créez vos listes personnalisées</p>
             <p className="text-gray-500 mb-8 text-lg">Une liste de favoris, de bières à découvrir et plus</p>
             <a href="listes">
-              <button className="bg-[#2EBB77] font-medium text-white px-16 md:px-20 py-4 rounded-xl">Créer</button>
+              <button className="bg-[#2EBB77] font-medium text-white px-16 md:px-20 py-4 rounded-lg">Créer</button>
             </a>
           </div>
           <div className=" z-20 2xl:mt-40 h-[520px] md:w-[350px] lg:w-[200px]"/>
         </div>
       </div>
-
     </div>
-
-
 
     <div className="bg-white">
       <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
