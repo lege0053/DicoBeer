@@ -29,7 +29,6 @@ const userController = {
       }
       
       const objectId = ObjectId.createFromHexString(userId);
-      console.log(objectId)
 
       const user = await userCollection.findOne({ _id: objectId });
 
@@ -54,8 +53,6 @@ const userController = {
   
       // Hachage du mot de passe
       const hashedPassword = await bcrypt.hash(password, 10);
-
-      console.log(hashedPassword)
   
       // Créer un nouvel utilisateur
       const user = {
@@ -82,7 +79,6 @@ const userController = {
   deleteUser: async (req, res)=> {
     try {
       const { id } = req.body;
-      console.log("id=",id)
   
       if (!id) {
         return res.status(400).json({ message: "Missing user ID" });
@@ -115,13 +111,13 @@ const userController = {
       const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (!isPasswordValid) {
-        return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(401).json({ message: 'Invalid password' });
       }
 
       // Login successful, generate and send token (optional)
       // ... (implement token generation logic, e.g., using JWT)
 
-      res.json({ message: 'Login successful', user: { ...user, password: undefined } }); // Send user info excluding password
+      res.json({ message: 'Login successful', user: { ...user, password: undefined } });
     } catch (error) {
       console.error('Error during login:', error);
       res.status(500).json({ message: 'Internal server error' });
