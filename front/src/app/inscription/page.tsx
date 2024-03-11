@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import TermsAndConditionsModal from "../components/TermsAndConditionsModal";
 
 type Error = {
   field?: string;
@@ -220,13 +221,7 @@ export default function Page() {
                 </div>
                 <div className="ml-3 text-sm">
                   <label htmlFor="terms" className="font-light text-gray-500">
-                    J'accepte les{" "}
-                    <a
-                      className="font-medium text-primary-600 hover:underline"
-                      href="#"
-                    >
-                      Termes et Conditions
-                    </a>
+                    J'accepte les{" "} <TermsAndConditionsModal />
                   </label>
                 </div>
               </div>
