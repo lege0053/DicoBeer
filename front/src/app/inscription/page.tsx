@@ -45,7 +45,7 @@ export default function Page() {
     });
 
     if (response.ok) {
-      // router.push('/profil')
+        console.log('succes')
     } else {
       const errorData = await response.json();
       setErrors([{ field: "error", message: errorData.message }]);

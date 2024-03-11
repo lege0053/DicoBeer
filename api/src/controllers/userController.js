@@ -50,6 +50,13 @@ const userController = {
       if (!pseudo || !email || !password || !birthdate || !role) {
         return res.status(400).json({ message: 'Données utilisateur incomplètes' });
       }
+
+      // Vérifier si l'email existe déjà
+      const existingUser = await userCollection.findOne({ email });
+
+      if (existingUser) {
+        return res.status(409).json({ message: 'Adresse email déjà utilisée' });
+      }
   
       // Hachage du mot de passe
       const hashedPassword = await bcrypt.hash(password, 10);
