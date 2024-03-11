@@ -12,6 +12,7 @@ router.get("/api/beers", beerController.getAllBeer);
 
 router.post("/api/auth/login", userController.login);
 router.post("/api/auth/logout", userController.logout);
-router.post("/api/auth/createUser", userController.createUser);
+router.post("/api/users/createUser", userController.createUser);
+router.post("/api/users/deleteUser", userController.deleteUser);
 
 module.exports = router;
