@@ -2,6 +2,8 @@
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 type Error = {
   field?: string;
@@ -46,6 +48,7 @@ export default function Page() {
 
     if (response.ok) {
         console.log('succes')
+        toast.success('Votre compte a été créé avec succès !');
     } else {
       const errorData = await response.json();
       setErrors([{ field: "error", message: errorData.message }]);
@@ -94,7 +97,7 @@ export default function Page() {
   }
 
   return (
-    <section className="bg-[#E5F4ED]">
+      <section className="bg-[#E5F4ED]">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
         <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -109,6 +112,7 @@ export default function Page() {
                   ))}
                 </div>
               )}
+              <ToastContainer></ToastContainer>
               <div>
                 <label
                   htmlFor="email"
@@ -155,6 +159,7 @@ export default function Page() {
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-10"
                     required
+                    autoComplete="on"
                   />
                   <span
                     className={`absolute inset-y-3 right-3 cursor-pointer ${
@@ -185,10 +190,10 @@ export default function Page() {
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     required
+                    autoComplete="on"
                   />
                   <span
                     className={`absolute inset-y-3 right-3 cursor-pointer ${
-                      // Use right-3 for consistency
                       confirmPasswordVisible ? "text-blue-500" : "text-gray-400"
                     }`}
                     onClick={() =>
