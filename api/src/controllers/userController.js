@@ -1,7 +1,3 @@
-const { ObjectId } = require('mongodb');
-const { userCollection } = require("../database");
-const bcrypt = require('bcrypt');
-
 const userController = {
 
   getAllUsers: async (req, res) => {
@@ -43,43 +39,19 @@ const userController = {
     }
   },
 
-  createUser: async (req, res) => {
+  getUserByEmail: async (req, res) => {
     try {
-      const { pseudo, email, password, birthdate, role } = req.body;
+      const email = req.params.email;
+      const user = await userCollection.findOne({ email });
   
-      if (!pseudo || !email || !password || !birthdate || !role) {
-        return res.status(400).json({ message: 'Données utilisateur incomplètes' });
-      }
-
-      // Vérifier si l'email existe déjà
-      const existingUser = await userCollection.findOne({ email });
-
-      if (existingUser) {
-        return res.status(409).json({ message: 'Adresse email déjà utilisée' });
+      if (!user) {
+        return res.status(404).json({ message: "Utilisateur non trouvé" });
       }
   
-      // Hachage du mot de passe
-      const hashedPassword = await bcrypt.hash(password, 10);
-  
-      // Créer un nouvel utilisateur
-      const user = {
-        pseudo,
-        email,
-        password: hashedPassword,
-        birthdate,
-        role,
-      };
-  
-      const result = await userCollection.insertOne(user);
-  
-      if (!result.acknowledged) {
-        return res.status(500).json({ message: "Échec de la création de l'utilisateur" });
-      }
-  
-      res.status(201).json({ message: 'Utilisateur créé avec succès' });
+      res.json({ user });
     } catch (error) {
-      console.error('Error creating user:', error);
-      res.status(500).json({ message: 'Internal server error' });
+      console.error("Error during user search by email:", error);
+      res.status(500).json({ message: "Internal server error" });
     }
   },
 
@@ -104,43 +76,52 @@ const userController = {
     }
   },
 
-  login: async (req, res) => {
+  updateUser: async (req, res) => {
     try {
-      const { email, password } = req.body;
-
-      // Find user by email
-      const user = await userCollection.findOne({ email });
+      const { pseudo, email } = req.body;
+      const userId = req.user.id;
+  
+      const user = await userCollection.findByIdAndUpdate(
+        userId,
+        { $set: { pseudo, email } },
+        { new: true }
+      );
+  
       if (!user) {
-        return res.status(401).json({ message: 'Invalid email' });
+        return res.status(404).json({ message: "Utilisateur non trouvé" });
       }
-
-      // Compare hashed passwords using bcrypt
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-
-      if (!isPasswordValid) {
-        return res.status(401).json({ message: 'Invalid password' });
-      }
-
-      // Login successful, generate and send token (optional)
-      // ... (implement token generation logic, e.g., using JWT)
-
-      res.json({ message: 'Login successful', user: { ...user, password: undefined } });
+  
+      res.json({ message: "Utilisateur mis à jour", user });
     } catch (error) {
-      console.error('Error during login:', error);
-      res.status(500).json({ message: 'Internal server error' });
+      console.error("Error during user update:", error);
+      res.status(500).json({ message: "Internal server error" });
     }
   },
 
-  logout: async (req, res) => {
+  changePassword: async (req, res) => {
     try {
-      // Implement logout logic (e.g., clear session data, invalidate token)
-      // You can customize this based on your authentication scheme
-      res.json({ message: 'Logout successful' });
+      const { oldPassword, newPassword } = req.body;
+      const userId = req.user.id;
+  
+      const user = await userCollection.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "Utilisateur non trouvé" });
+      }
+  
+      const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
+      if (!isPasswordValid) {
+        return res.status(401).json({ message: "Mot de passe incorrect" });
+      }
+  
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      await userCollection.findByIdAndUpdate(userId, { $set: { password: hashedPassword } });
+  
+      res.json({ message: "Mot de passe modifié" });
     } catch (error) {
-      console.error('Error during logout:', error);
-      res.status(500).json({ message: 'Internal server error' });
+      console.error("Error during password change:", error);
+      res.status(500).json({ message: "Internal server error" });
     }
   },
 };
 
-module.exports = userController;
+// module.exports = userController;

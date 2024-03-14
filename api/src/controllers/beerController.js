@@ -1,10 +1,21 @@
-const { beerCollection } = require("../database");
+import Beer from "../models/BeerModel.js";
 
-const beerController = {
-  getAllBeer: async (req, res) => {
-    const users = await beerCollection.find({}).toArray();
-    res.json(users);
-  },
+export async function getAllBeers(req, res){ 
+  try {
+    const beers = await Beer.find({})
+    res.status(200).json({
+      status: "success",
+      data: [beers],
+      message: "All beers",
+  });
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({
+      status: "error",
+      code: 500,
+      data: [],
+      message: "Internal Server Error",
+    });
+  }
+  res.end()
 };
-
-module.exports = beerController;

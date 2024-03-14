@@ -3,7 +3,7 @@ import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import TermsAndConditionsModal from "../components/TermsAndConditionsModal";
 
 type Error = {
@@ -26,79 +26,39 @@ export default function Page() {
     const birthdate = formData.get("date");
     const email = formData.get("email");
     const pseudo = email?.toString().split("@")[0];
-    const role = { admin: 0 };
 
     setErrors([]);
 
-    const validationErrors = validateUserInput(
-      email!,
-      password!,
-      confirmPassword!,
-      birthdate!
-    );
-    if (validationErrors.length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+    // si la confirmation du mdp est bonne
+    if (password === confirmPassword) {
+      // POST de création de compte
+      const response = await fetch("http://localhost:9000/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, pseudo, birthdate, password }),
+      });
 
-    const response = await fetch("http://localhost:9000/api/users/createUser", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, pseudo, birthdate, role }),
-    });
-
-    if (response.ok) {
-        console.log('succes')
-        toast.success('Votre compte a été créé avec succès !');
-    } else {
+      // si tout va bien
+      if (response.ok) {
+        toast.success("Votre compte a été créé avec succès !");
+      } else {
+      // si erreur
       const errorData = await response.json();
-      setErrors([{ field: "error", message: errorData.message }]);
-    }
-
-    function validateUserInput(
-      email: FormDataEntryValue,
-      password: FormDataEntryValue,
-      confirmPassword: FormDataEntryValue,
-      birthdate: FormDataEntryValue
-    ): Error[] {
-      const errors: Error[] = [];
-
-      // confirm password
-      console.log(confirmPassword);
-      if (password !== confirmPassword) {
-        errors.push({
+        setErrors([{ field: "error", message: errorData.message ? errorData.message : errorData.error.undefined}]);
+      }
+    } else {
+      // si la confirmation du mdp n'est pas bonne
+      setErrors([
+        {
           field: "confirmPassword",
           message: "Les mots de passe ne correspondent pas",
-        });
-      }
-
-      // minimum age 18
-      const birthDate = new Date(birthdate.toString());
-      const eighteenYearsAgo = new Date();
-      eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
-      if (birthDate > eighteenYearsAgo) {
-        errors.push({
-          field: "date",
-          message: "Vous devez être âgé(e) de 18 ans ou plus",
-        });
-      }
-
-      // valid email
-      const regex =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (!regex.test(email.toString())) {
-        errors.push({
-          field: "email",
-          message: "Format d'email invalide",
-        });
-      }
-
-      return errors;
+        },
+      ]);
     }
   }
 
   return (
-      <section className="bg-[#E5F4ED]">
+    <section className="bg-[#E5F4ED]">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
         <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -221,7 +181,7 @@ export default function Page() {
                 </div>
                 <div className="ml-3 text-sm">
                   <label htmlFor="terms" className="font-light text-gray-500">
-                    J'accepte les{" "} <TermsAndConditionsModal />
+                    J'accepte les <TermsAndConditionsModal />
                   </label>
                 </div>
               </div>

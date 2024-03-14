@@ -1,21 +1,23 @@
 import { NextResponse, NextRequest } from 'next/server'
-//import { authenticate } from 'auth-provider'
  
 export function middleware(request: NextRequest) {
-  //const isAuthenticated = authenticate(request)
-  //const isAuthenticated = true
- 
-  // If the user is authenticated, continue as normal
-  //if (isAuthenticated) {
-    //return NextResponse.next()
-  //}
- 
-  // Redirect to login page if not authenticated
-  //return NextResponse.redirect(new URL('/login', request.url))
-  return NextResponse.redirect(new URL('/accueil', request.url))
+
+  if (request.nextUrl.pathname.match('/')) {
+    return Response.redirect(new URL('/accueil', request.url))
+  }
+
+  // authentication
+  const currentUser = request.cookies.get('currentUser')?.value
+
+  if (currentUser && !request.nextUrl.pathname.startsWith('/profil')) {
+    return Response.redirect(new URL('/profil', request.url))
+  }
+
+  if (!currentUser && !request.nextUrl.pathname.startsWith('/connexion')) {
+    return Response.redirect(new URL('/connexion', request.url))
+  }
 }
  
 export const config = {
-  //matcher: '/dashboard/:path*',
   matcher: '/'
 }
