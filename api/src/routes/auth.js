@@ -34,8 +34,7 @@ router.post(
     "/login",
     check("email")
         .isEmail()
-        .withMessage("Enter a valid email address")
-        .normalizeEmail(),
+        .withMessage("Entrer un email valide."),
     check("password").not().isEmpty(),
     Validate,
     Login

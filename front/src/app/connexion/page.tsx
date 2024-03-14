@@ -3,6 +3,7 @@ import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
+import { cp } from "fs";
 
 type Error = {
   field?: string;
@@ -31,8 +32,8 @@ export default function Page() {
 
     if (response.ok) {
       const data = await response.json();
-      document.cookie = `currentUser=${data.token};`;
-      localStorage.setItem("currentUser",data.userId);
+      console.log(data.data[0])
+      localStorage.setItem("currentUser", data.data[0]._id);
       router.push("/profil");
     } else {
       const errorData = await response.json();

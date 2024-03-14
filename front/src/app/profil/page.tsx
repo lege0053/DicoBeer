@@ -12,6 +12,8 @@ interface User {
 export default function Page() {
   const [user, setUser] = useState<User>({});
   const userId = localStorage.getItem("currentUser");
+  console.log("userID=",userId)
+
   if(!userId) {
     window.location.href = '/connexion';
   }
@@ -26,7 +28,7 @@ export default function Page() {
         const data = await response.json();
         setUser(data);
       } catch (error) {
-        console.error('Error fetching beers:', error);
+        console.error('Error fetching users:', error);
       }
     }
     fetchUser();
@@ -51,7 +53,7 @@ export default function Page() {
   return (
     <>
       <h1>Profil: {user.pseudo}</h1>
-      <button onClick={handleLogout}>Déconnexion</button>
+      <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onClick={handleLogout}>Déconnexion</button>
     </>
   );
 }

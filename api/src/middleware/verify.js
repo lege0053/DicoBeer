@@ -3,6 +3,7 @@ import User from "../models/UserModel.js";
 import jwt from "jsonwebtoken";
 
 export async function Verify(req, res, next) {
+    console.log("veri")
     const authHeader = req.headers["cookie"]; // get the session cookie from request header
 
     if (!authHeader) return res.sendStatus(401); // if there is no cookie from request header, send an unauthorized response.
@@ -46,7 +47,7 @@ export function VerifyRole(req, res, next) {
         }
         next(); // continue to the next middleware or function
     } catch (err) {
-        res.status(500).json({
+        return res.status(500).json({
             status: "error",
             code: 500,
             data: [],
