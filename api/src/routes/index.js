@@ -2,6 +2,7 @@ import express from "express";
 import {Verify, VerifyRole } from '../middleware/verify.js';
 import Auth from './auth.js';
 import Beer from './beer.js';
+import User from './user.js';
 
 const app = express();
 app.disable("x-powered-by");
@@ -22,12 +23,12 @@ app.get("/api", (req, res) => {
     }
 });
 
-app.get("/api/user", Verify, (req, res) => {
-    return res.status(200).json({
-        status: "success",
-        message: "Welcome to the your Dashboard!",
-    });
-})
+// app.get("/api/user", Verify, (req, res) => {
+//     return res.status(200).json({
+//         status: "success",
+//         message: "Welcome to the your Dashboard!",
+//     });
+// })
 
 app.get("/api/admin", Verify, VerifyRole, (req, res) => {
     return res.status(200).json({
@@ -37,6 +38,7 @@ app.get("/api/admin", Verify, VerifyRole, (req, res) => {
 });
 
 app.use('/api/auth', Auth);
+app.use('/api/user', User)
 app.use('/api/beer', Beer);
 
 

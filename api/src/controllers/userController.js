@@ -1,8 +1,9 @@
-const userController = {
+import User from "../models/UserModel.js";
 
-  getAllUsers: async (req, res) => {
+export async function getAllUsers (req, res) {
     try {
-      const users = await userCollection.find({}).toArray();
+      const users = await User.find({})
+      console.log(users)
 
       const usersWhitoutPassword = users.map((user) => {
         return { ...user, password: undefined };
@@ -14,35 +15,36 @@ const userController = {
       console.error('Error getting all users:', error);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  },
+  }
 
-  getUserById: async (req, res) => {
+  export async function getUserById (req, res) {
+    console.log(req.body._id)
     try {
-      const userId = req.params.id;
-    
-      if (!ObjectId.isValid(userId)) {
-        return res.status(400).json({ message: 'Invalid user ID format' });
-      }
-      
-      const objectId = ObjectId.createFromHexString(userId);
-
-      const user = await userCollection.findOne({ _id: objectId });
+      const user = await User.findOne({ _id: req.body._id });
 
       if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+        return res.status(404).json({
+          status: "error",
+          data: [],
+          message: "Utilisateur introuvable",
+        });
       }
 
-      res.json({ ...user, password: undefined });
+      return res.status(200).json({
+        status: "success",
+        data: [{...user, password:undefined}],
+        message: "Utilisateur trouvé",
+      });
     } catch (error) {
       console.error('Error getting user by ID:', error);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  },
+  }
 
-  getUserByEmail: async (req, res) => {
+  export async function getUserByEmail (req, res){
     try {
       const email = req.params.email;
-      const user = await userCollection.findOne({ email });
+      const user = await User.findOne({ email });
   
       if (!user) {
         return res.status(404).json({ message: "Utilisateur non trouvé" });
@@ -53,9 +55,9 @@ const userController = {
       console.error("Error during user search by email:", error);
       return res.status(500).json({ message: "Internal server error" });
     }
-  },
+  }
 
-  deleteUser: async (req, res)=> {
+  export async function deleteUser (req, res){
     try {
       const { id } = req.body;
   
@@ -63,7 +65,7 @@ const userController = {
         return res.status(400).json({ message: "Missing user ID" });
       }
   
-      const deleteResult = await userCollection.deleteOne({ _id: ObjectId.createFromHexString(id) });
+      const deleteResult = await User.deleteOne({ _id: ObjectId.createFromHexString(id) });
   
       if (deleteResult.deletedCount === 0) {
         return res.status(404).json({ message: "User not found" });
@@ -74,14 +76,14 @@ const userController = {
       console.error('Error deleting user:', error);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  },
+  }
 
-  updateUser: async (req, res) => {
+  export async function updateUser (req, res) {
     try {
       const { pseudo, email } = req.body;
       const userId = req.user.id;
   
-      const user = await userCollection.findByIdAndUpdate(
+      const user = await User.findByIdAndUpdate(
         userId,
         { $set: { pseudo, email } },
         { new: true }
@@ -96,14 +98,14 @@ const userController = {
       console.error("Error during user update:", error);
       return res.status(500).json({ message: "Internal server error" });
     }
-  },
+  }
 
-  changePassword: async (req, res) => {
+  export async function changePassword (req, res){
     try {
       const { oldPassword, newPassword } = req.body;
       const userId = req.user.id;
   
-      const user = await userCollection.findById(userId);
+      const user = await User.findById(userId);
       if (!user) {
         return res.status(404).json({ message: "Utilisateur non trouvé" });
       }
@@ -114,14 +116,11 @@ const userController = {
       }
   
       const hashedPassword = await bcrypt.hash(newPassword, 10);
-      await userCollection.findByIdAndUpdate(userId, { $set: { password: hashedPassword } });
+      await User.findByIdAndUpdate(userId, { $set: { password: hashedPassword } });
   
       res.json({ message: "Mot de passe modifié" });
     } catch (error) {
       console.error("Error during password change:", error);
       return res.status(500).json({ message: "Internal server error" });
     }
-  },
-};
-
-// module.exports = userController;
+  }

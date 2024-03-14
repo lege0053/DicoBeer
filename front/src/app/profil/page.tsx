@@ -11,22 +11,27 @@ interface User {
 
 export default function Page() {
   const [user, setUser] = useState<User>({});
-  const userId = localStorage.getItem("currentUser");
-  console.log("userID=",userId)
-
-  if(!userId) {
-    window.location.href = '/connexion';
-  }
 
   useEffect(() => {
+    const userId = localStorage.getItem("currentUser");
+
+    if(!userId) {
+      window.location.href = '/connexion';
+    }
+
     async function fetchUser() {
       try {
-        const response = await fetch("http://localhost:9000/api/users/" + userId);
+        const response = await fetch("http://localhost:9000/api/user/getUserById", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ "_id": userId }),
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
         const data = await response.json();
-        setUser(data);
+        setUser(data.data[0]._doc);
+
       } catch (error) {
         console.error('Error fetching users:', error);
       }

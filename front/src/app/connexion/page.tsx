@@ -32,7 +32,7 @@ export default function Page() {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data.data[0])
+      localStorage.setItem("token", data.data[1])
       localStorage.setItem("currentUser", data.data[0]._id);
       router.push("/profil");
     } else {

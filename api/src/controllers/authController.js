@@ -94,12 +94,11 @@ export async function Login(req, res) {
       sameSite: "None",
     };
     const token = user.generateAccessJWT(); // generate session token for user
-    console.log(token)
     res.cookie("SessionID", token, options); // set the token to response header, so that the client sends it back on each subsequent request
     
     return res.status(200).json({
       status: "success",
-      data: [user],
+      data: [user, token],
       message: "Vous êtes connecté",
     });
   } catch (err) {
